@@ -27,10 +27,11 @@ class OperationExecutor {
    * @returns object that contains source object and his modified clone
    */
   firstTaskExecute(arg) {
-    /**
-     * Place your code here
-     */
-    return null /* variable with result */;
+    let obj2 = arg.obj1;  
+    let people = Object.assign({}, obj2);
+    people.firstName = "Petr";
+    people.relatives[1].lastName = "Petrova";
+    return {obj2, people};
   }
 
   /**
@@ -40,10 +41,12 @@ class OperationExecutor {
    * @returns object that contains source objects and their combined and modified clone
    */
   secondTaskExecute(arg) {
-    /**
-     * Place your code here
-     */
-    return null /* variable with result */;
+    let combo = {...arg.obj1, ...arg.obj2};
+    let obj1 = arg.obj1;
+    let obj2 = arg.obj2;
+    obj1.a = 100;
+    obj2.b = 200;
+    return {obj1, obj2, combo};
   }
 
   /**
@@ -53,10 +56,15 @@ class OperationExecutor {
    * @returns object that contains modified source object
    */
   thirdTaskExecute(arg) {
-    /**
-     * Place your code here
-     */
-    return null /* variable with result */;
+    let people = Object.assign({}, arg);
+    people.obj1.relatives.map(relative => {
+        if (relative.lastName === "Ivanov"){
+            relative.gender = "male";       
+        } else {
+            relative.gender = "female";
+        }
+    });
+    return people;
   }
 
   /**
@@ -66,10 +74,13 @@ class OperationExecutor {
    * @returns object that contains array of string with female relatives
    */
   fourthTaskExecute(arg) {
-    /**
-     * Place your code here
-     */
-    return null /* variable with result */;
+    let women = new Array();
+    arg.obj1.relatives.filter(relative => {
+      return relative.gender === "female";
+    }).forEach(relative => {
+      women.push(`Hi, ${relative.firstName} ${relative.lastName}!`);
+    });
+    return women;
   }
 }
 
