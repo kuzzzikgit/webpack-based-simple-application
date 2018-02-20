@@ -75,9 +75,9 @@ class OperationExecutor {
   fourthTaskExecute(arg) {
     let people = [];
     let females = arg.obj1.relatives.reduce((helloArr, relative) => {
-  			relative.gender === "female" ? helloArr = [...helloArr,(`Hi, ${relative.firstName} ${relative.lastName}!`)] : people;
-        return helloArr;
-  		}, people);
+      relative.gender === "female" ? helloArr = [...helloArr,(`Hi, ${relative.firstName} ${relative.lastName}!`)] : people;
+      return helloArr;
+    }, people);
     return females
   }
 }
