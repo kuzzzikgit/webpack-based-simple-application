@@ -73,8 +73,8 @@ class OperationExecutor {
    * @returns object that contains array of string with female relatives
    */
   fourthTaskExecute(arg) {
-    let people = []; 
-  	let females = arg.obj1.relatives.reduce((helloArr, relative) => {
+    let people = [];
+    let females = arg.obj1.relatives.reduce((helloArr, relative) => {
   			relative.gender === "female" ? helloArr = [...helloArr,(`Hi, ${relative.firstName} ${relative.lastName}!`)] : people;
         return helloArr;
   		}, people);
