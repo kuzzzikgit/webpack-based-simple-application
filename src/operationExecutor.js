@@ -56,15 +56,14 @@ class OperationExecutor {
    * @returns object that contains modified source object
    */
   thirdTaskExecute(arg) {
-    let people = Object.assign({}, arg);
-    people.obj1.relatives.map(relative => {
+    arg.obj1.relatives.forEach(relative => {
         if (relative.lastName === "Ivanov"){
             relative.gender = "male";       
         } else {
             relative.gender = "female";
         }
     });
-    return people;
+    return arg;
   }
 
   /**
@@ -74,13 +73,12 @@ class OperationExecutor {
    * @returns object that contains array of string with female relatives
    */
   fourthTaskExecute(arg) {
-    let women = new Array();
-    arg.obj1.relatives.filter(relative => {
-      return relative.gender === "female";
-    }).forEach(relative => {
-      women.push(`Hi, ${relative.firstName} ${relative.lastName}!`);
-    });
-    return women;
+    let people = []; 
+  	let females = arg.obj1.relatives.reduce((helloArr, relative) => {
+  			relative.gender === "female" ? helloArr = [...helloArr,(`Hi, ${relative.firstName} ${relative.lastName}!`)] : people;
+        return helloArr;
+  		}, people);
+    return females
   }
 }
 
